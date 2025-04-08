@@ -5,7 +5,7 @@ class TestTextNode(unittest.TestCase):
     def test_eq(self):
         node = TextNode("This is a text node", TextType.BOLD)
         node2 = TextNode("This is a text node", TextType.BOLD)
-        # Directly check equality with assertTrue
+        
         self.assertFalse(node == node2, "Nodes should be equal")
     
     def test_not_equal_different_text(self):
