@@ -44,11 +44,19 @@ class TestHTMLNode(unittest.TestCase):
         
         self.assertIn(node.props_to_html(), possible_outputs)
     
-    def test_to_html_raises_not_implemented(self):
-        # Test that to_html raises NotImplementedError
-        node = HTMLNode()
-        with self.assertRaises(NotImplementedError):
-            node.to_html()
+    def test_to_html(self):
+        # Test that to_html returns the expected HTML
+        node = HTMLNode("div", "content", [], None)
+        self.assertEqual(node.to_html(), "<div>content</div>")
+        
+        # Test with children
+        child = HTMLNode("span", "child")
+        node = HTMLNode("div", None, [child], None)
+        self.assertEqual(node.to_html(), "<div><span>child</span></div>")
+        
+        # Test with no tag
+        node = HTMLNode(None, "text", None, None)
+        self.assertEqual(node.to_html(), "text")
     
     def test_repr(self):
         # Test the __repr__ method
