@@ -40,7 +40,7 @@ def generate_page(from_path, template_path, dest_path):
     
     print(f"Successfully generated {dest_path}")
 
-def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath="/"):
     """
     Recursively generate HTML pages from markdown files in a directory.
     
@@ -48,6 +48,7 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
         dir_path_content: Path to the content directory containing markdown files
         template_path: Path to the HTML template file
         dest_dir_path: Path to the destination directory for generated HTML files
+        basepath: Base path for the site (default: '/')
     """
     print(f"Crawling directory: {dir_path_content}")
     
@@ -80,6 +81,6 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
                 os.makedirs(output_dir, exist_ok=True)
                 
                 # Generate the HTML page
-                generate_page(markdown_path, template_path, output_path)
+                generate_page(markdown_path, template_path, output_path, basepath)
     
     print(f"Completed recursive page generation from {dir_path_content} to {dest_dir_path}")

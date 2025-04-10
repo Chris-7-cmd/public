@@ -19,9 +19,6 @@ ENV/
 *.swp
 *.swo
 
-# Generated output directory
-public/
-
 # System files
 .DS_Store
 Thumbs.db
