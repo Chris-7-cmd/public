@@ -29,10 +29,13 @@ def generate_page(from_path, template_path, dest_path, basepath="/"):
     html_node = markdown_to_html_node(markdown_content)
     html_content = html_node.to_html()
     
-    # Replace placeholders in the template
+    # Replace basepath placeholder
+    template_content = template_content.replace('{{ basepath }}', basepath)
+    
+    # Replace content placeholders in the template
     full_html = template_content.replace('{{ Title }}', title).replace('{{ Content }}', html_content)
     
-    # Replace href="/" and src="/" with the basepath
+    # Replace any remaining href="/" and src="/" with the basepath
     full_html = full_html.replace('href="/', f'href="{basepath}')
     full_html = full_html.replace('src="/', f'src="{basepath}')
     
