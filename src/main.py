@@ -34,12 +34,13 @@ def main():
     generate_pages_recursive(content_dir, template_path, docs_dir, basepath)
 
     # After copying all static files
-print("Ensuring CSS is in the root directory...")
-if os.path.exists(os.path.join(static_dir, "index.css")):
-    shutil.copy2(
-        os.path.join(static_dir, "index.css"), 
-        os.path.join(docs_dir, "index.css")
-    )
+    print("Ensuring CSS is in the root directory...")
+    if os.path.exists(os.path.join(static_dir, "index.css")):
+        shutil.copy2(
+            os.path.join(static_dir, "index.css"), 
+            os.path.join(docs_dir, "index.css")
+        )
+        
     print("Static site generation complete!")
 
 if __name__ == "__main__":
