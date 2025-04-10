@@ -4,7 +4,6 @@ import os
 import shutil
 import sys
 
-
 def main():
     """
     Main function to run the static site generator
@@ -38,4 +37,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
